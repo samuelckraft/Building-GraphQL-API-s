@@ -3,9 +3,11 @@ from flask_graphql import GraphQLView
 import graphene
 from schema import Query, Mutation
 from models import db
+from password import password
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:654U7jsv@localhost/bakery_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{password}@localhost/bakery_db'
 db.init_app(app)
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
